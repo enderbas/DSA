@@ -1,14 +1,19 @@
 #ifndef STACK_H
 #define STACK_H
 
-#define MAX 10
-
-template<class type> class Stack
+template<typename type> class Stack
 {
-	type items[MAX];
+	int count = 0;
+	type *items;
 	int top = -1;
 
 public:
+	Stack(int size)
+	{
+		this->count = size;
+		items = new type[this->count];
+	}
+	~Stack() { delete[] items; }
 	bool isEmpty()
 	{
 		if (top == -1)
@@ -18,7 +23,7 @@ public:
 	}
 	bool isFull()
 	{
-		if (top == (MAX - 1))
+		if (top == (count - 1))
 			return true;
 		else
 			return false;
@@ -50,12 +55,8 @@ public:
 		return items[top];
 	}
 
-	template <typename T> T templateNull(T param) {
-		return NULL;
-	}
-	template<> std::string templateNull(std::string param) {
-		return "";
-	}
+	template<typename T> T templateNull(T param) { return NULL; }
+	template<> std::string templateNull(std::string param) { return ""; }
 };
 
 #endif // STACK_H
