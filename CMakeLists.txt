@@ -8,4 +8,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_executable(DataStructures
 main.cpp
 Stack.h
+Queue.h
+CircularQueue.h
 )
